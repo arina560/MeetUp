@@ -1,10 +1,3 @@
-//
-//  LocationPickerView.swift
-//  MeetUp
-//
-//  Created by Арина Петрожицкая on 27.02.26.
-//
-
 import SwiftUI
 import MapKit
 
@@ -50,4 +43,5 @@ struct LocationPickerView: View {
 }
 
 #Preview {
-    LocationPickerView(coordinate: .constant(CLLocationCoordinate2D(latitude: 55.7558, longitude: 37.6173)))}
+    LocationPickerView(coordinate: .constant(CLLocationCoordinate2D(latitude: 55.7558, longitude: 37.6173)))
+}

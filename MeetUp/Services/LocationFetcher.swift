@@ -1,16 +1,9 @@
-//
-//  LocationFetcher.swift
-//  MeetUp
-//
-//  Created by Арина Петрожицкая on 18.01.26.
-//
-
 import Foundation
 import CoreLocation
 
 class LocationFetcher: NSObject, CLLocationManagerDelegate {
     static let shared = LocationFetcher()
-    
+
     let manager = CLLocationManager()
     var lastKnownLocation: CLLocationCoordinate2D?
 
@@ -24,7 +17,7 @@ class LocationFetcher: NSObject, CLLocationManagerDelegate {
         manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
     }
-    
+
     func stop() {
         manager.stopUpdatingLocation()
     }

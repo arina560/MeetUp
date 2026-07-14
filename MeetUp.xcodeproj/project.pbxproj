@@ -6,14 +6,99 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		87BC0CEC3003A85B00B61E3D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BC0CEB3003A85B00B61E3D /* WidgetKit.framework */; };
+		87BC0CEE3003A85B00B61E3D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87BC0CED3003A85B00B61E3D /* SwiftUI.framework */; };
+		87BC0CFD3003A85E00B61E3D /* RecentMeetingsWidgetExtensionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 87BC0CE93003A85B00B61E3D /* RecentMeetingsWidgetExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		87BC0D1C3003DDE900B61E3D /* MeetUp Share.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 87BC0D123003DDE900B61E3D /* MeetUp Share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		87BC0CFB3003A85E00B61E3D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8719C4732F1BAC50008B30EB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87BC0CE83003A85B00B61E3D;
+			remoteInfo = RecentMeetingsWidgetExtensionExtension;
+		};
+		87BC0D1A3003DDE900B61E3D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8719C4732F1BAC50008B30EB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87BC0D113003DDE900B61E3D;
+			remoteInfo = "MeetUp Share";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		87BC0D023003A85E00B61E3D /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				87BC0CFD3003A85E00B61E3D /* RecentMeetingsWidgetExtensionExtension.appex in Embed Foundation Extensions */,
+				87BC0D1C3003DDE900B61E3D /* MeetUp Share.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		8719C47B2F1BAC50008B30EB /* MeetUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		87BC0CE93003A85B00B61E3D /* RecentMeetingsWidgetExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RecentMeetingsWidgetExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		87BC0CEB3003A85B00B61E3D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		87BC0CED3003A85B00B61E3D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		87BC0D073003AC6C00B61E3D /* RecentMeetingsWidgetExtensionExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RecentMeetingsWidgetExtensionExtension.entitlements; sourceTree = "<group>"; };
+		87BC0D123003DDE900B61E3D /* MeetUp Share.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "MeetUp Share.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		87BC0D053003ABC800B61E3D /* Exceptions for "MeetUp" folder in "RecentMeetingsWidgetExtensionExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Models/Person.swift,
+			);
+			target = 87BC0CE83003A85B00B61E3D /* RecentMeetingsWidgetExtensionExtension */;
+		};
+		87BC0D203003DDE900B61E3D /* Exceptions for "MeetUp Share" folder in "MeetUp Share" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 87BC0D113003DDE900B61E3D /* MeetUp Share */;
+		};
+		87BC0D243003DEF800B61E3D /* Exceptions for "MeetUp" folder in "MeetUp Share" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Models/Person.swift,
+			);
+			target = 87BC0D113003DDE900B61E3D /* MeetUp Share */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		8719C47D2F1BAC50008B30EB /* MeetUp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				87BC0D053003ABC800B61E3D /* Exceptions for "MeetUp" folder in "RecentMeetingsWidgetExtensionExtension" target */,
+				87BC0D243003DEF800B61E3D /* Exceptions for "MeetUp" folder in "MeetUp Share" target */,
+			);
 			path = MeetUp;
+			sourceTree = "<group>";
+		};
+		87BC0CEF3003A85B00B61E3D /* RecentMeetingsWidgetExtension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = RecentMeetingsWidgetExtension;
+			sourceTree = "<group>";
+		};
+		87BC0D133003DDE900B61E3D /* MeetUp Share */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				87BC0D203003DDE900B61E3D /* Exceptions for "MeetUp Share" folder in "MeetUp Share" target */,
+			);
+			path = "MeetUp Share";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,13 +111,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		87BC0CE63003A85B00B61E3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87BC0CEE3003A85B00B61E3D /* SwiftUI.framework in Frameworks */,
+				87BC0CEC3003A85B00B61E3D /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87BC0D0F3003DDE900B61E3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		8719C4722F1BAC50008B30EB = {
 			isa = PBXGroup;
 			children = (
+				87BC0D073003AC6C00B61E3D /* RecentMeetingsWidgetExtensionExtension.entitlements */,
 				8719C47D2F1BAC50008B30EB /* MeetUp */,
+				87BC0CEF3003A85B00B61E3D /* RecentMeetingsWidgetExtension */,
+				87BC0D133003DDE900B61E3D /* MeetUp Share */,
+				87BC0CEA3003A85B00B61E3D /* Frameworks */,
 				8719C47C2F1BAC50008B30EB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +146,19 @@
 			isa = PBXGroup;
 			children = (
 				8719C47B2F1BAC50008B30EB /* MeetUp.app */,
+				87BC0CE93003A85B00B61E3D /* RecentMeetingsWidgetExtensionExtension.appex */,
+				87BC0D123003DDE900B61E3D /* MeetUp Share.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		87BC0CEA3003A85B00B61E3D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				87BC0CEB3003A85B00B61E3D /* WidgetKit.framework */,
+				87BC0CED3003A85B00B61E3D /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -55,10 +171,13 @@
 				8719C4772F1BAC50008B30EB /* Sources */,
 				8719C4782F1BAC50008B30EB /* Frameworks */,
 				8719C4792F1BAC50008B30EB /* Resources */,
+				87BC0D023003A85E00B61E3D /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				87BC0CFC3003A85E00B61E3D /* PBXTargetDependency */,
+				87BC0D1B3003DDE900B61E3D /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				8719C47D2F1BAC50008B30EB /* MeetUp */,
@@ -69,6 +188,50 @@
 			productName = MeetUp;
 			productReference = 8719C47B2F1BAC50008B30EB /* MeetUp.app */;
 			productType = "com.apple.product-type.application";
+		};
+		87BC0CE83003A85B00B61E3D /* RecentMeetingsWidgetExtensionExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87BC0CFF3003A85E00B61E3D /* Build configuration list for PBXNativeTarget "RecentMeetingsWidgetExtensionExtension" */;
+			buildPhases = (
+				87BC0CE53003A85B00B61E3D /* Sources */,
+				87BC0CE63003A85B00B61E3D /* Frameworks */,
+				87BC0CE73003A85B00B61E3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				87BC0CEF3003A85B00B61E3D /* RecentMeetingsWidgetExtension */,
+			);
+			name = RecentMeetingsWidgetExtensionExtension;
+			packageProductDependencies = (
+			);
+			productName = RecentMeetingsWidgetExtensionExtension;
+			productReference = 87BC0CE93003A85B00B61E3D /* RecentMeetingsWidgetExtensionExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		87BC0D113003DDE900B61E3D /* MeetUp Share */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87BC0D1D3003DDE900B61E3D /* Build configuration list for PBXNativeTarget "MeetUp Share" */;
+			buildPhases = (
+				87BC0D0E3003DDE900B61E3D /* Sources */,
+				87BC0D0F3003DDE900B61E3D /* Frameworks */,
+				87BC0D103003DDE900B61E3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				87BC0D133003DDE900B61E3D /* MeetUp Share */,
+			);
+			name = "MeetUp Share";
+			packageProductDependencies = (
+			);
+			productName = "MeetUp Share";
+			productReference = 87BC0D123003DDE900B61E3D /* MeetUp Share.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -81,6 +244,12 @@
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					8719C47A2F1BAC50008B30EB = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					87BC0CE83003A85B00B61E3D = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					87BC0D113003DDE900B61E3D = {
 						CreatedOnToolsVersion = 16.4;
 					};
 				};
@@ -100,12 +269,28 @@
 			projectRoot = "";
 			targets = (
 				8719C47A2F1BAC50008B30EB /* MeetUp */,
+				87BC0CE83003A85B00B61E3D /* RecentMeetingsWidgetExtensionExtension */,
+				87BC0D113003DDE900B61E3D /* MeetUp Share */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8719C4792F1BAC50008B30EB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87BC0CE73003A85B00B61E3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87BC0D103003DDE900B61E3D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +307,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		87BC0CE53003A85B00B61E3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87BC0D0E3003DDE900B61E3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		87BC0CFC3003A85E00B61E3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87BC0CE83003A85B00B61E3D /* RecentMeetingsWidgetExtensionExtension */;
+			targetProxy = 87BC0CFB3003A85E00B61E3D /* PBXContainerItemProxy */;
+		};
+		87BC0D1B3003DDE900B61E3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87BC0D113003DDE900B61E3D /* MeetUp Share */;
+			targetProxy = 87BC0D1A3003DDE900B61E3D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		8719C4842F1BAC52008B30EB /* Debug */ = {
@@ -251,14 +463,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MeetUp/MeetUp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UAND697L6R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "MeetUp needs your location to save meeting places and show them on the map";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "MeetUp needs your location to save meeting places and show them on the map";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -280,14 +493,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MeetUp/MeetUp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UAND697L6R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "MeetUp needs your location to save meeting places and show them on the map";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "MeetUp needs your location to save meeting places and show them on the map";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -298,6 +512,114 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.arinapetr.MeetUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		87BC0D003003A85E00B61E3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = RecentMeetingsWidgetExtensionExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UAND697L6R;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RecentMeetingsWidgetExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arinapetr.MeetUp.RecentMeetingsWidgetExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		87BC0D013003A85E00B61E3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = RecentMeetingsWidgetExtensionExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UAND697L6R;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RecentMeetingsWidgetExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arinapetr.MeetUp.RecentMeetingsWidgetExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		87BC0D1E3003DDE900B61E3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "MeetUp Share/MeetUp Share.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UAND697L6R;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MeetUp Share/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "MeetUp Share";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.arinapetr.MeetUp.MeetUp-Share";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		87BC0D1F3003DDE900B61E3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "MeetUp Share/MeetUp Share.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UAND697L6R;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MeetUp Share/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "MeetUp Share";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.arinapetr.MeetUp.MeetUp-Share";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -321,6 +643,24 @@
 			buildConfigurations = (
 				8719C4872F1BAC52008B30EB /* Debug */,
 				8719C4882F1BAC52008B30EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87BC0CFF3003A85E00B61E3D /* Build configuration list for PBXNativeTarget "RecentMeetingsWidgetExtensionExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87BC0D003003A85E00B61E3D /* Debug */,
+				87BC0D013003A85E00B61E3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87BC0D1D3003DDE900B61E3D /* Build configuration list for PBXNativeTarget "MeetUp Share" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87BC0D1E3003DDE900B61E3D /* Debug */,
+				87BC0D1F3003DDE900B61E3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

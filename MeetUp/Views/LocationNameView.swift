@@ -1,10 +1,3 @@
-//
-//  LocationNameView.swift
-//  MeetUp
-//
-//  Created by Арина Петрожицкая on 27.02.26.
-//
-
 import SwiftUI
 import SwiftData
 import CoreLocation
@@ -12,17 +5,17 @@ import CoreLocation
 struct LocationNameView: View {
     let coordinate: CLLocationCoordinate2D?
     @State private var placeName: String?
-    
-    init(person: Person){
+
+    init(person: Person) {
         self.coordinate = person.coordinate
     }
-    
-    init(coordinate: CLLocationCoordinate2D?){
+
+    init(coordinate: CLLocationCoordinate2D?) {
         self.coordinate = coordinate
     }
-    
+
     var body: some View {
-        Group{
+        Group {
             if let placeName = placeName {
                 Text(placeName)
             } else if coordinate != nil {
@@ -33,7 +26,7 @@ struct LocationNameView: View {
                 EmptyView()
             }
         }
-        .task(id: coordinate.map { "\($0.latitude),\($0.longitude)" }){
+        .task(id: coordinate.map { "\($0.latitude),\($0.longitude)" }) {
             guard let coordinate = coordinate else { return }
             placeName = await LocationService.shared.getPlaceName(for: coordinate)
         }

@@ -1,10 +1,3 @@
-//
-//  LongPressMapView.swift
-//  MeetUp
-//
-//  Created by Арина Петрожицкая on 1.03.26.
-//
-
 import SwiftUI
 import MapKit
 
@@ -82,8 +75,8 @@ struct LongPressMapView: UIViewRepresentable {
         }
     }
 }
+
 #Preview {
     LongPressMapView(coordinate: .constant(CLLocationCoordinate2D(latitude: 55.7558, longitude: 37.6173)),
-                     region: .constant(MKCoordinateRegion( center: CLLocationCoordinate2D(latitude: 55.7558, longitude: 37.6173), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-                     )))
+                     region: .constant(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 55.7558, longitude: 37.6173), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))))
 }

@@ -2,8 +2,6 @@
 //  EditPersonView.swift
 //  MeetUp
 //
-//  Created by Арина Петрожицкая on 26.02.26.
-//
 
 import SwiftUI
 import PhotosUI
@@ -11,29 +9,20 @@ import SwiftData
 import MapKit
 
 struct EditPersonView: View {
-    let person: Person
     @Environment(\.dismiss) var dismiss
-    @State private var name: String
-    @State private var pickerItem: PhotosPickerItem?
-    @State private var photoData: Data
-    @State private var isUpdatingLocation = false
-    @State private var showingLocationPicker = false
-    @State private var selectedCoordinate: CLLocationCoordinate2D?
+    @State private var viewModel: EditPersonViewModel
 
     init(person: Person) {
-        self.person = person
-        _name = State(initialValue: person.name)
-        _photoData = State(initialValue: person.photo)
-        _selectedCoordinate = State(initialValue: person.coordinate)
+        _viewModel = State(initialValue: EditPersonViewModel(person: person))
     }
-    
+
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             Form {
                 Section("Photo") {
-                    HStack{
+                    HStack {
                         Spacer()
-                        if let uiImage = UIImage(data: photoData){
+                        if let uiImage = UIImage(data: viewModel.photoData) {
                             Image(uiImage: uiImage)
                                 .resizable()
                                 .scaledToFill()
@@ -45,30 +34,25 @@ struct EditPersonView: View {
                                 .frame(width: 120, height: 120)
                                 .foregroundColor(.gray)
                         }
-                        
                         Spacer()
                     }
                     .listRowBackground(Color.clear)
-                    
-                    PhotosPicker(selection: $pickerItem, matching: .images) {
+
+                    PhotosPicker(selection: $viewModel.pickerItem, matching: .images) {
                         Label("Select another photo", systemImage: "photo")
                     }
-                    .onChange(of: pickerItem) { oldValue, newValue in
-                        Task {
-                            if let data = try? await newValue?.loadTransferable(type: Data.self) {
-                                photoData = data
-                            }
-                        }
-                    }
-                    
                 }
-                
+
                 Section("Name") {
-                    TextField("Name", text: $name)
+                    TextField("Name", text: $viewModel.name)
                 }
-                
+
+                Section("Tags") {
+                    TextField("e.g. work, conference", text: $viewModel.tagsText)
+                }
+
                 Section("Location") {
-                    if let coord = selectedCoordinate {
+                    if let coord = viewModel.selectedCoordinate {
                         HStack {
                             Image(systemName: "mappin.circle.fill")
                                 .foregroundColor(.blue)
@@ -81,18 +65,18 @@ struct EditPersonView: View {
                     }
 
                     Button {
-                        updateLocation()
+                        viewModel.updateLocation()
                     } label: {
-                        if isUpdatingLocation {
+                        if viewModel.isUpdatingLocation {
                             ProgressView()
                         } else {
                             Label("Update current location", systemImage: "location")
                         }
                     }
-                    .disabled(isUpdatingLocation)
+                    .disabled(viewModel.isUpdatingLocation)
 
                     Button {
-                        showingLocationPicker = true
+                        viewModel.showingLocationPicker = true
                     } label: {
                         Label("Select on map", systemImage: "map")
                     }
@@ -102,47 +86,26 @@ struct EditPersonView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
+                    Button("Cancel") { dismiss() }
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Save") {
+                        viewModel.saveChanges()
                         dismiss()
                     }
-                }
-                
-                ToolbarItem(placement: .confirmationAction){
-                    Button("Save"){
-                        saveChanges()
-                    }
-                    .disabled(name.isEmpty)
+                    .disabled(!viewModel.canSave)
                 }
             }
             .onAppear {
-                LocationFetcher.shared.start()
+                viewModel.startLocationTracking()
             }
             .onDisappear {
-                LocationFetcher.shared.stop()
+                viewModel.stopLocationTracking()
             }
-            .sheet(isPresented: $showingLocationPicker) {
-                LocationPickerView(coordinate: $selectedCoordinate)
+            .sheet(isPresented: $viewModel.showingLocationPicker) {
+                LocationPickerView(coordinate: $viewModel.selectedCoordinate)
             }
         }
-    }
-    
-    private func updateLocation() {
-        isUpdatingLocation = true
-        LocationFetcher.shared.start()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            if let location = LocationFetcher.shared.lastKnownLocation {
-                selectedCoordinate = location
-            }
-            isUpdatingLocation = false
-        }
-    }
-
-    private func saveChanges() {
-        person.name = name
-        person.photo = photoData
-        person.latitude = selectedCoordinate?.latitude
-        person.longitude = selectedCoordinate?.longitude
-        dismiss()
     }
 }
 

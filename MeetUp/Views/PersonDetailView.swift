@@ -2,32 +2,21 @@
 //  PersonDetailView.swift
 //  MeetUp
 //
-//  Created by Арина Петрожицкая on 18.01.26.
-//
 
 import SwiftUI
 import MapKit
 
 struct PersonDetailView: View {
-    let person: Person
-    @State private var mapRegion: MKCoordinateRegion
-    @State private var showingMap = true
-    @State private var showingEditSheet = false
-    
+    @State private var viewModel: PersonDetailViewModel
+
     init(person: Person) {
-        self.person = person
-        
-        if let coordinate = person.coordinate {
-            _mapRegion = State(initialValue: MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)))
-        } else {
-            _mapRegion = State(initialValue: MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)))
-        }
+        _viewModel = State(initialValue: PersonDetailViewModel(person: person))
     }
-    
+
     var body: some View {
-        ScrollView{
-            VStack(spacing: 20){
-                if let uiImage = UIImage(data: person.photo){
+        ScrollView {
+            VStack(spacing: 20) {
+                if let uiImage = UIImage(data: viewModel.person.photo) {
                     Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFill()
@@ -42,29 +31,27 @@ struct PersonDetailView: View {
                         .foregroundStyle(.gray)
                         .padding()
                 }
-                
-                Text(person.name)
+
+                Text(viewModel.person.name)
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding()
-                
-                if person.coordinate != nil {
-                    Picker("View", selection: $showingMap){
+
+                if viewModel.hasLocation {
+                    Picker("View", selection: $viewModel.showingMap) {
                         Text("Photo").tag(false)
                         Text("Map").tag(true)
                     }
                     .pickerStyle(.segmented)
                     .padding(.horizontal)
-                    
-                    if showingMap, let coordinate = person.coordinate {
+
+                    if viewModel.showingMap, let coordinate = viewModel.person.coordinate {
                         Map {
-                            Annotation(person.name, coordinate: coordinate) {
-                                VStack {
-                                    Image(systemName: "mappin.circle.fill")
-                                        .font(.title)
-                                        .foregroundColor(.red)
-                                        .symbolEffect(.pulse)
-                                }
+                            Annotation(viewModel.person.name, coordinate: coordinate) {
+                                Image(systemName: "mappin.circle.fill")
+                                    .font(.title)
+                                    .foregroundColor(.red)
+                                    .symbolEffect(.pulse)
                             }
                         }
                         .mapStyle(.standard)
@@ -78,23 +65,31 @@ struct PersonDetailView: View {
                     }
                 }
             }
-            
+
             VStack(alignment: .leading, spacing: 10) {
                 Text("Meetup Details")
                     .font(.headline)
-                
+
                 Divider()
-                
+
                 HStack {
                     Image(systemName: "calendar")
-                    Text("Added: \(person.createdAt.formatted(date: .abbreviated, time: .shortened))")
+                    Text("Added: \(viewModel.person.createdAt.formatted(date: .abbreviated, time: .shortened))")
                 }
                 .foregroundColor(.secondary)
-                
-                if let coordinate = person.coordinate {
+
+                if !viewModel.person.tags.isEmpty {
+                    HStack {
+                        Image(systemName: "tag")
+                        Text(viewModel.person.tags.joined(separator: ", "))
+                    }
+                    .foregroundColor(.secondary)
+                }
+
+                if viewModel.hasLocation {
                     HStack {
                         Image(systemName: "mappin")
-                        LocationNameView(person: person)
+                        LocationNameView(person: viewModel.person)
                     }
                     .foregroundColor(.blue)
                 } else {
@@ -112,30 +107,30 @@ struct PersonDetailView: View {
             )
             .padding(.horizontal)
         }
-        .navigationTitle(person.name)
+        .navigationTitle(viewModel.person.name)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 HStack(spacing: 12) {
                     Button {
-                        person.isFavorite.toggle()
+                        viewModel.toggleFavorite()
                     } label: {
-                        Image(systemName: person.isFavorite ? "heart.fill" : "heart")
-                            .foregroundColor(person.isFavorite ? .red : .gray)
+                        Image(systemName: viewModel.person.isFavorite ? "heart.fill" : "heart")
+                            .foregroundColor(viewModel.person.isFavorite ? .red : .gray)
                     }
                     .buttonStyle(.plain)
                     Button("Edit") {
-                        showingEditSheet = true
+                        viewModel.showingEditSheet = true
                     }
                 }
             }
         }
-        .sheet(isPresented: $showingEditSheet) {
-            EditPersonView(person: person)
+        .sheet(isPresented: $viewModel.showingEditSheet) {
+            EditPersonView(person: viewModel.person)
         }
     }
 }
 
 #Preview {
-    let person = Person( name: "John Hamilton", photo: UIImage(systemName: "person.circle.fill")?.pngData() ?? Data(), latitude: 55.7558,longitude: 37.6173)
+    let person = Person(name: "John Hamilton", photo: UIImage(systemName: "person.circle.fill")?.pngData() ?? Data(), latitude: 55.7558, longitude: 37.6173)
     PersonDetailView(person: person)
 }
